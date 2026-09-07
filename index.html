@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zoey Tsou — Game Artist / Production Pipeline</title>
+<meta name="description" content="Slot game artist with 7.5 years at Microgaming Asia. Ran an end-to-end production line solo, then rebuilt it to run in half the time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#EBE8E2;
+  --paper:#FDFCFA;
+  --ink:#1A1917;
+  --muted:#6E6A63;
+  --rule:#D2CDC4;
+  --rule-soft:#E0DCD4;
+  --signal:#93304A;
+  --sans:'Archivo',system-ui,sans-serif;
+  --serif:'Source Serif 4',Georgia,serif;
+  --pad:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+
+/* ---------- top bar ---------- */
+.bar{
+  border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:50;
+  background:rgba(235,232,226,.92);backdrop-filter:blur(8px);
+}
+.bar .wrap{display:flex;align-items:baseline;gap:24px;height:56px}
+.mark{font-weight:700;letter-spacing:-.02em;font-size:15px}
+.mark span{color:var(--muted);font-weight:500}
+.bar nav{margin-left:auto;display:flex;gap:20px;font-size:13.5px;color:var(--muted)}
+.bar nav a{text-decoration:none}
+.bar nav a:hover{color:var(--signal)}
+@media(max-width:640px){.bar nav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(44px,7vw,84px) 0 0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:end}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr;align-items:start}}
+h1{
+  font-size:clamp(38px,6.4vw,68px);line-height:.99;letter-spacing:-.035em;
+  font-weight:700;margin:0 0 22px;
+}
+.lede{font-family:var(--serif);font-size:clamp(17px,1.55vw,20px);line-height:1.5;max-width:34em;margin:0 0 26px;color:#2E2C29}
+.role{font-size:13.5px;color:var(--muted);margin:0 0 14px;letter-spacing:.01em}
+.here{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted)}
+.here b{color:var(--ink);font-weight:500}
+
+.reel{border:1px solid var(--rule);background:#000;overflow:hidden}
+.reel video{width:100%;height:auto}
+.reel figcaption{
+  background:var(--paper);border-top:1px solid var(--rule);
+  padding:9px 12px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px
+}
+
+/* ---------- numbers ---------- */
+.figures{
+  margin-top:clamp(44px,6vw,72px);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+@media(max-width:760px){.figures{grid-template-columns:repeat(2,1fr)}}
+.fig{padding:20px 22px 22px;border-left:1px solid var(--rule-soft)}
+.fig:first-child{border-left:0;padding-left:0}
+@media(max-width:760px){.fig:nth-child(3){border-left:0;padding-left:0}.fig:nth-child(-n+2){border-bottom:1px solid var(--rule-soft)}}
+.fig .n{font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.035em;line-height:1;margin-bottom:9px}
+.fig .n em{font-style:normal;color:var(--signal)}
+.fig .l{font-size:13px;color:var(--muted);line-height:1.4}
+
+/* ---------- sections ---------- */
+section{padding:clamp(56px,8vw,104px) 0}
+.sec-head{margin-bottom:clamp(28px,4vw,44px);max-width:56ch}
+h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-weight:600;margin:0 0 14px}
+.sec-head p{font-family:var(--serif);font-size:17px;line-height:1.55;color:#33302C;margin:0}
+
+/* ---------- pipeline ---------- */
+.pipe{background:var(--paper);border:1px solid var(--rule);padding:clamp(22px,3.4vw,40px)}
+.stages{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+@media(max-width:900px){.stages{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.stages{grid-template-columns:repeat(2,1fr)}}
+.stage{background:var(--paper);padding:15px 13px 17px;min-height:106px;display:flex;flex-direction:column;gap:8px}
+.stage i{font-style:normal;font-size:11.5px;color:var(--signal);font-weight:600}
+.stage b{font-weight:500;font-size:14px;line-height:1.28;letter-spacing:-.01em}
+.stage small{font-size:11.5px;color:var(--muted);line-height:1.35;margin-top:auto}
+.span{
+  margin-top:14px;border-top:1px solid var(--ink);padding-top:11px;
+  display:flex;flex-wrap:wrap;gap:6px 20px;align-items:baseline;font-size:13.5px;color:var(--muted)
+}
+.span b{color:var(--ink);font-weight:600}
+.built{margin:clamp(26px,3.4vw,38px) 0 0;padding:0;list-style:none;display:grid;gap:16px}
+.built li{padding-left:20px;position:relative;font-family:var(--serif);font-size:16.5px;line-height:1.52;max-width:64ch}
+.built li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:1px;background:var(--signal)}
+.result{
+  margin-top:clamp(26px,3.4vw,36px);border-top:1px solid var(--rule);padding-top:18px;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px
+}
+.result .big{font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-.03em}
+.result .big em{font-style:normal;color:var(--signal)}
+.result span{font-size:14px;color:var(--muted);max-width:40ch}
+
+/* ---------- work ---------- */
+.work{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.item{background:var(--paper);display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:0}
+@media(max-width:800px){.item{grid-template-columns:1fr}}
+.item .shot{background:#15130F;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.item .shot img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.item .body{padding:clamp(22px,3vw,34px)}
+.item h3{font-size:20px;letter-spacing:-.02em;font-weight:600;margin:0 0 4px}
+.item .meta{font-size:12.5px;color:var(--muted);margin:0 0 16px}
+.item p{font-family:var(--serif);font-size:16.5px;line-height:1.55;margin:0 0 14px;max-width:56ch;color:#2E2C29}
+.item p:last-child{margin-bottom:0}
+.tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--rule);border-radius:2px;padding:3px 8px}
+
+/* ---------- videos ---------- */
+.vids{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1000px){.vids{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.vids{grid-template-columns:repeat(2,1fr)}}
+.vid{border:1px solid var(--rule);background:var(--paper)}
+.vid .frame{position:relative;aspect-ratio:9/16;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid .cap{padding:9px 10px 11px;border-top:1px solid var(--rule)}
+.vid .cap b{display:block;font-size:13px;font-weight:500;letter-spacing:-.01em;line-height:1.25}
+.vid .cap small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.vidnote{margin-top:20px;font-size:13.5px;color:var(--muted);max-width:60ch}
+
+/* ---------- spec ---------- */
+.spec{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,3.4vw,44px);align-items:start}
+@media(max-width:880px){.spec{grid-template-columns:1fr}}
+.spec figure{margin:0;border:1px solid var(--rule);background:var(--paper)}
+.spec figcaption{padding:10px 12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+.spec p{font-family:var(--serif);font-size:16.5px;line-height:1.55;color:#2E2C29;max-width:52ch}
+
+/* ---------- quotes ---------- */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:800px){.quotes{grid-template-columns:1fr}}
+blockquote{margin:0;background:var(--paper);padding:clamp(24px,3vw,34px)}
+blockquote p{font-family:var(--serif);font-size:18px;line-height:1.5;margin:0 0 16px;color:#26241F}
+blockquote cite{font-style:normal;font-size:13px;color:var(--muted);line-height:1.45;display:block}
+blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5px}
+
+/* ---------- contact ---------- */
+.foot{border-top:1px solid var(--ink);padding:clamp(40px,5vw,64px) 0 clamp(48px,6vw,80px)}
+.foot h2{margin-bottom:18px}
+.links{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:16px}
+.links a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--signal);padding-bottom:1px}
+.links a:hover{color:var(--ink);border-color:var(--ink)}
+.fine{margin-top:30px;font-size:12.5px;color:var(--muted);max-width:66ch;line-height:1.5}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="mark">Zoey Tsou <span>/ Zelda</span></div>
+    <nav>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#work">Work</a>
+      <a href="#video">Promo video</a>
+      <a href="#spec">Technical art</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <p class="role">Game Artist · Production Pipeline · AI Tooling</p>
+      <h1>I ran a slot game production line on my own, then rebuilt it.</h1>
+      <p class="lede">Seven and a half years of slot game art at Microgaming Asia. Character and UI work on original titles first, then four years owning an end-to-end production line by myself — and turning it into a system that ran in half the time.</p>
+      <div class="here">
+        <span>Based in <b>Taipei, Taiwan</b></span>
+        <span>Open to <b>remote and relocation</b></span>
+      </div>
+    </div>
+    <figure class="reel" style="margin:0">
+      <video src="assets/doki-loop.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/doki-character.jpg"></video>
+      <figcaption><span>Doki Doki Parfait — character animation and bonus sequence</span><span>Live capture</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="figures">
+    <div class="fig"><div class="n">7.5<em>yrs</em></div><div class="l">Microgaming Asia / Gacha Studios, 2019–2026</div></div>
+    <div class="fig"><div class="n">38</div><div class="l">Promo videos written, captured and cut</div></div>
+    <div class="fig"><div class="n">20<em>+</em></div><div class="l">Titles delivered per year, four years running</div></div>
+    <div class="fig"><div class="n">3d <em>→</em> 1.5d</div><div class="l">Delivery time per title after I rebuilt the process</div></div>
+  </div>
+</div>
+
+<!-- ============ PIPELINE ============ -->
+<section id="pipeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The production line</h2>
+      <p>From 2022 I ran this alone. No assistant, no outsourcing, three operator platforms, each with its own delivery spec.</p>
+    </div>
+
+    <div class="pipe">
+      <div class="stages">
+        <div class="stage"><i>01</i><b>Feature research</b><small>Read the maths, learn what the game actually does</small></div>
+        <div class="stage"><i>02</i><b>QA capture setup</b><small>Define what needs to be recorded and how</small></div>
+        <div class="stage"><i>03</i><b>Gameplay recording</b><small>Capture every feature and win state</small></div>
+        <div class="stage"><i>04</i><b>Asset replacement</b><small>Full art pass across the game project</small></div>
+        <div class="stage"><i>05</i><b>Promo video edit</b><small>Script, cut, sound, motion graphics</small></div>
+        <div class="stage"><i>06</i><b>Marketing pack</b><small>Delivered to three platform specs</small></div>
+      </div>
+      <div class="span"><b>One person, all six stages.</b> <span>Research through to final delivery, on every title.</span></div>
+
+      <ul class="built">
+        <li>I turned marketing pack delivery into a documented system. One spec sheet per platform, reused on every title, so the format questions stopped being questions.</li>
+        <li>I brought AI tools into live production from 2021. Nobody asked me to. The manual steps were the bottleneck, so I went and fixed them.</li>
+        <li>I wrote and maintained the internal documentation the whole process runs on, which is why it survived handover.</li>
+      </ul>
+
+      <div class="result">
+        <span class="big">3 days <em>→</em> 1.5 days per title</span>
+        <span>Held at 20+ titles a year for four years.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <p>Original studio IP, licensed IP, and the franchises I stayed with across multiple releases.</p>
+    </div>
+
+    <div class="work">
+
+      <article class="item">
+        <div class="shot"><img src="assets/doki-feature.jpg" alt="Doki Doki Parfait — maid character and bonus feature"></div>
+        <div class="body">
+          <h3>Doki Doki Parfait</h3>
+          <p class="meta">Original studio IP · Character design, animation, in-game art</p>
+          <p>A maid café themed slot, and part of the studio's move into the Japanese market. I designed the characters and animated them, including the full screen cut-ins and the bonus sequence.</p>
+          <p>It was picked to represent the studio at a group-wide creative symposium.</p>
+          <div class="tagrow"><span class="tag">Character design</span><span class="tag">2D animation</span><span class="tag">In-game UI</span><span class="tag">Japanese market</span></div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="shot"><img src="assets/playboy-wilds.jpg" alt="Playboy Wilds — character art and base game layout"></div>
+        <div class="body">
+          <h3>Playboy Wilds</h3>
+          <p class="meta">Licensed IP · Character art, symbol set, screen layout</p>
+          <p>Character art and mock-up layout on a licensed title. Everything shipped here went through the brand holder's approval, so the work had to hold up against an external style guide, not just an internal one.</p>
+          <div class="tagrow"><span class="tag">Licensed IP</span><span class="tag">Brand approval</span><span class="tag">Symbol design</span></div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="shot"><img src="assets/lucky-twins.jpg" alt="Lucky Twins Wilds — base game screen"></div>
+        <div class="body">
+          <h3>Franchise work</h3>
+          <p class="meta">Break Away ×3 · Lucky Twins ×4 · Almighty Zeus ×2 · Queen of Cairo ×2</p>
+          <p>I stayed with the studio's core franchises across successive releases, which meant holding a visual line that was already established while each new title still had to look like its own thing.</p>
+          <p>Almighty Empire was original studio IP built from nothing. I also produced the explainer content for Link &amp; Merge, the studio's proprietary mechanic — material aimed at operators rather than players, which meant understanding the trigger logic well enough to teach it.</p>
+          <div class="tagrow"><span class="tag">Franchise continuity</span><span class="tag">Original IP</span><span class="tag">B2B explainer</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Promo video</h2>
+      <p>38 delivered in total. Five here, chosen to cover the range: proprietary mechanics, franchise releases, and different art directions.</p>
+    </div>
+
+    <div class="vids">
+      <div class="vid">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/VTMX1OUxVtU" title="Tiger's Treasures promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cap"><b>Tiger's Treasures</b><small>Social cut</small></div>
+      </div>
+      <div class="vid">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/osR4I36oU80" title="123 Soccer Link and Merge promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cap"><b>123 Soccer</b><small>Link &amp; Merge mechanic</small></div>
+      </div>
+      <div class="vid">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/lfcLYjHvNrs" title="Break Away Deluxe Triple Pots promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cap"><b>Break Away Deluxe</b><small>Triple Pots · franchise</small></div>
+      </div>
+      <div class="vid">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/yE1hZa1RjuU" title="Almighty Zeus Wilds promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cap"><b>Almighty Zeus Wilds</b><small>Link &amp; Merge mechanic</small></div>
+      </div>
+      <div class="vid">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/wnjj-jmuwo4" title="NeZha Triple Powers promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="cap"><b>NeZha Triple Powers</b><small>Pot Link</small></div>
+      </div>
+    </div>
+
+    <p class="vidnote">On each one I set the capture rules, recorded the gameplay, wrote the beat, and cut it. Portrait and landscape versions, multiple locales.</p>
+  </div>
+</section>
+
+<!-- ============ TECHNICAL ART ============ -->
+<section id="spec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Technical art</h2>
+      <p>Where the art job stops being a drawing job.</p>
+    </div>
+
+    <div class="spec">
+      <figure>
+        <img src="assets/doki-ui-spec.jpg" alt="Annotated landscape UI layout showing named asset layers">
+        <figcaption>Landscape UI layout with the asset layers named — reel frame, symbols, character states, control bar</figcaption>
+      </figure>
+      <div>
+        <p><b>Portrait to landscape conversion.</b> The title existed in portrait only. I was the only artist on the conversion, working with one developer to rebuild the UI, reel layout and symbol arrangement for a different aspect ratio.</p>
+        <p>Every decision had to be checked against what the engine could actually do, so most of the real work was deciding where the design had to bend and where it couldn't.</p>
+        <p>Alongside that: naming and structuring assets so the same layout could be handed to someone else, and keeping the documentation current so it stayed usable after I moved on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTES ============ -->
+<section id="said">
+  <div class="wrap">
+    <div class="sec-head"><h2>What colleagues said</h2></div>
+    <div class="quotes">
+      <blockquote>
+        <p>"She explored new AI tools to improve both creative quality and efficiency, and collaborated well across teams."</p>
+        <cite><b>Estela Liu</b>Head of Department, Gacha Studios<br>LinkedIn recommendation, August 2026</cite>
+      </blockquote>
+      <blockquote>
+        <p>"Zoey's character and animation work played an important part in bringing the game's distinctive theme and personality to life."</p>
+        <cite><b>Charlie Cheng</b>General Manager, Red Cypress Technologies<br>LinkedIn recommendation, September 2026</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <div class="links">
+      <a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a>
+      <a href="https://www.linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="fine">All game titles shown are published and publicly released. Screens and video are shown as work samples only; all game IP belongs to the respective rights holders.</p>
+  </div>
+</footer>
+
+</body>
+</html>

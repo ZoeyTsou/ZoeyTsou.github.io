@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zoey Tsou — Game Artist / Production Pipeline</title>
-<meta name="description" content="Slot game artist with 7.5 years at Microgaming Asia. Ran an end-to-end production line solo, then rebuilt it to run in half the time.">
+<meta name="description" content="Slot game artist with 7.5 years at Microgaming Asia. Character design, in-game animation and UI — and an end-to-end production line I ran solo, then rebuilt to run in half the time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
 :root{
   --ground:#EBE8E2;
   --paper:#FDFCFA;
+  --dark:#15130F;
   --ink:#1A1917;
   --muted:#6E6A63;
   --rule:#D2CDC4;
@@ -41,11 +42,11 @@ a{color:inherit}
   background:rgba(235,232,226,.92);backdrop-filter:blur(8px);
 }
 .bar .wrap{display:flex;align-items:baseline;gap:24px;height:56px}
-.mark{font-weight:700;letter-spacing:-.02em;font-size:15px}
-.bar nav{margin-left:auto;display:flex;gap:20px;font-size:13.5px;color:var(--muted)}
-.bar nav a{text-decoration:none}
+.mark{font-weight:700;letter-spacing:-.02em;font-size:15px;white-space:nowrap}
+.bar nav{margin-left:auto;display:flex;gap:18px;font-size:13.5px;color:var(--muted)}
+.bar nav a{text-decoration:none;white-space:nowrap}
 .bar nav a:hover{color:var(--signal)}
-@media(max-width:640px){.bar nav{display:none}}
+@media(max-width:880px){.bar nav{display:none}}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(44px,7vw,84px) 0 0}
@@ -60,7 +61,7 @@ h1{
 .here{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted)}
 .here b{color:var(--ink);font-weight:500}
 
-.reel{border:1px solid var(--rule);background:#15130F;overflow:hidden}
+.reel{border:1px solid var(--rule);background:var(--dark);overflow:hidden}
 .reel .stagevid{display:flex;align-items:center;justify-content:center;padding:clamp(14px,2vw,22px)}
 .reel video{width:auto;max-width:100%;max-height:min(58vh,460px);height:auto;box-shadow:0 12px 34px rgba(0,0,0,.45)}
 .reel figcaption{
@@ -86,6 +87,25 @@ section{padding:clamp(56px,8vw,104px) 0}
 .sec-head{margin-bottom:clamp(28px,4vw,44px);max-width:56ch}
 h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-weight:600;margin:0 0 14px}
 .sec-head p{font-family:var(--serif);font-size:17px;line-height:1.55;color:#33302C;margin:0}
+
+/* ---------- craft: character art ---------- */
+.plate{margin:0;border:1px solid var(--rule);background:var(--paper)}
+.plate .art{background:var(--dark);display:flex;align-items:center;justify-content:center;padding:clamp(18px,3vw,34px)}
+.plate figcaption{
+  border-top:1px solid var(--rule);padding:11px 14px;font-size:12.5px;color:var(--muted);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;line-height:1.45
+}
+.plate figcaption b{color:var(--ink);font-weight:500}
+.sheet .art{background:#fff;padding:clamp(14px,2.2vw,26px)}
+.sheet .art img{width:100%;max-width:1020px;height:auto}
+
+.artgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(16px,2vw,22px);margin-top:clamp(16px,2vw,22px)}
+@media(max-width:860px){.artgrid{grid-template-columns:1fr}}
+.artgrid .plate{display:flex;flex-direction:column}
+.artgrid .art{flex:1}
+.artgrid .art video{width:100%;max-width:640px;height:auto;box-shadow:0 10px 28px rgba(0,0,0,.45)}
+.gifrow{display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.5vw,26px);flex-wrap:nowrap;width:100%}
+.gifrow img{height:auto;width:auto;max-height:190px;max-width:46%;object-fit:contain}
 
 /* ---------- pipeline ---------- */
 .pipe{background:var(--paper);border:1px solid var(--rule);padding:clamp(22px,3.4vw,40px)}
@@ -117,14 +137,19 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 .item{background:var(--paper);display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:0}
 @media(max-width:800px){.item{grid-template-columns:1fr}}
 .item .shot{
-  background:#15130F;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;padding:clamp(18px,2.4vw,26px)
+  background:var(--dark);display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:clamp(18px,2.4vw,26px);gap:clamp(12px,2vw,22px)
 }
 .item .shot img{
   width:auto;height:auto;max-width:100%;max-height:440px;object-fit:contain;
   box-shadow:0 10px 28px rgba(0,0,0,.5)
 }
 @media(max-width:800px){.item .shot img{max-height:380px}}
+.item.stack{grid-template-columns:1fr}
+.item.stack .shot img{max-height:none;width:auto;max-width:100%}
+.item.stack .shot .full{width:100%;max-width:940px}
+.item.stack .shot .duo{max-height:430px;width:auto}
+@media(max-width:560px){.item .shot{flex-wrap:wrap}.item.stack .shot .duo{max-height:300px}}
 .item .body{padding:clamp(22px,3vw,34px)}
 .item h3{font-size:20px;letter-spacing:-.02em;font-weight:600;margin:0 0 4px}
 .item .meta{font-size:12.5px;color:var(--muted);margin:0 0 16px}
@@ -166,10 +191,14 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 .vidnote{margin-top:20px;font-size:13.5px;color:var(--muted);max-width:60ch}
 
 /* ---------- spec ---------- */
-.spec{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,3.4vw,44px);align-items:start}
-@media(max-width:880px){.spec{grid-template-columns:1fr}}
+.spec{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,3.4vw,44px);align-items:start}
+.spec + .spec{margin-top:clamp(40px,5vw,72px)}
+.spec.flip{grid-template-columns:1fr 1.2fr}
+.spec.flip figure{order:2}
+@media(max-width:880px){.spec,.spec.flip{grid-template-columns:1fr}.spec.flip figure{order:0}}
 .spec figure{margin:0;border:1px solid var(--rule);background:var(--paper)}
-.spec figcaption{padding:10px 12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+.spec figure.onDark{background:var(--dark)}
+.spec figcaption{padding:10px 12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted);background:var(--paper)}
 .spec p{font-family:var(--serif);font-size:16.5px;line-height:1.55;color:#2E2C29;max-width:52ch}
 
 /* ---------- quotes ---------- */
@@ -195,6 +224,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
   <div class="wrap">
     <div class="mark">Zoey Tsou</div>
     <nav>
+      <a href="#craft">Character art</a>
       <a href="#pipeline">Pipeline</a>
       <a href="#work">Work</a>
       <a href="#video">Promo video</a>
@@ -211,7 +241,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
     <div>
       <p class="role">Game Artist · Production Pipeline · AI Tooling</p>
       <h1>I ran a slot game production line on my own, then rebuilt it.</h1>
-      <p class="lede">Seven and a half years of slot game art at Microgaming Asia. Character and UI work on original titles first, then four years owning an end-to-end production line by myself — and turning it into a system that ran in half the time.</p>
+      <p class="lede">Seven and a half years of slot game art at Microgaming Asia. Character design, animation and UI on original titles first, then four years owning an end-to-end production line by myself — and turning it into a system that ran in half the time.</p>
       <div class="here">
         <span>Based in <b>Taipei, Taiwan</b></span>
         <span>Open to <b>remote and relocation</b></span>
@@ -232,6 +262,49 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
     <div class="fig"><div class="n">3d <em>→</em> 1.5d</div><div class="l">Delivery time per title after I rebuilt the process</div></div>
   </div>
 </div>
+
+<!-- ============ CHARACTER ART ============ -->
+<section id="craft">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Character art and animation</h2>
+      <p>Design, paint, rig, animate. The part of the job I'd do whether or not anyone was paying me for it.</p>
+    </div>
+
+    <figure class="plate sheet">
+      <div class="art"><img src="assets/zeus-characters.jpg" alt="Almighty Zeus Wilds character line-up — five Greek gods and a trident" loading="lazy"></div>
+      <figcaption>
+        <span><b>Almighty Zeus Wilds</b> — character line-up for an original studio title</span>
+        <span>Designed and painted by me, except Poseidon</span>
+      </figcaption>
+    </figure>
+
+    <div class="artgrid">
+      <figure class="plate">
+        <div class="art">
+          <video src="assets/doki-process.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/doki-process-poster.jpg"></video>
+        </div>
+        <figcaption>
+          <span><b>Doki Doki Parfait</b> — sketch to finished character, recorded end to end</span>
+          <span>Timelapse</span>
+        </figcaption>
+      </figure>
+
+      <figure class="plate">
+        <div class="art">
+          <div class="gifrow">
+            <img src="assets/incan-gold-a.gif" alt="Incan Gold — character attack animation" loading="lazy">
+            <img src="assets/incan-gold-b.gif" alt="Incan Gold — character idle loop animation" loading="lazy">
+          </div>
+        </div>
+        <figcaption>
+          <span><b>Incan Gold</b> — in-game character animation</span>
+          <span>Frame by frame</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <!-- ============ PIPELINE ============ -->
 <section id="pipeline">
@@ -294,6 +367,31 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
           <p class="meta">Licensed IP · Character art, symbol set, screen layout</p>
           <p>Character art and mock-up layout on a licensed title. Everything shipped here went through the brand holder's approval, so the work had to hold up against an external style guide, not just an internal one.</p>
           <div class="tagrow"><span class="tag">Licensed IP</span><span class="tag">Brand approval</span><span class="tag">Symbol design</span></div>
+        </div>
+      </article>
+
+      <article class="item stack">
+        <div class="shot"><img class="full" src="assets/kitsune-rush.jpg" alt="Kitsune Rush — landscape base game with torii gate frame and fox symbols" loading="lazy"></div>
+        <div class="body">
+          <h3>Kitsune Rush</h3>
+          <p class="meta">Full art replacement · Layout, symbols, character art, effects</p>
+          <p>A complete art pass over an existing game frame — new theme, new symbol set, new characters, new effects, and a screen layout rebuilt around them. The maths and the mechanic stay put; everything you can see gets replaced.</p>
+          <p>This is the work the production line was built for. Doing it well means holding a coherent art direction while every asset has a fixed slot, a fixed size and a fixed name to drop back into.</p>
+          <div class="tagrow"><span class="tag">Full reskin</span><span class="tag">Screen layout</span><span class="tag">Symbol design</span><span class="tag">Character art</span><span class="tag">Effects</span></div>
+        </div>
+      </article>
+
+      <article class="item stack">
+        <div class="shot">
+          <img class="duo" src="assets/breakaway-entry.jpg" alt="Break Away — free spins entry screen with goalkeeper" loading="lazy">
+          <img class="duo" src="assets/breakaway-summary.jpg" alt="Break Away — free spins win summary screen" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>Break Away — feature screens</h3>
+          <p class="meta">Franchise title · Screen art, layout, effects</p>
+          <p>Free spins entry and win summary. These two screens carry the biggest emotional beats in a slot, so they have to land instantly and still sit inside a franchise look that was set long before this release.</p>
+          <p>Both are built to the same layout rules as every other screen in the game — safe areas, type sizes and button positions that hold across resolutions.</p>
+          <div class="tagrow"><span class="tag">Franchise continuity</span><span class="tag">Feature screens</span><span class="tag">Effects</span></div>
         </div>
       </article>
 
@@ -390,6 +488,18 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
         <p><b>Portrait to landscape conversion.</b> The title existed in portrait only. I was the only artist on the conversion, working with one developer to rebuild the UI, reel layout and symbol arrangement for a different aspect ratio.</p>
         <p>Every decision had to be checked against what the engine could actually do, so most of the real work was deciding where the design had to bend and where it couldn't.</p>
         <p>Alongside that: naming and structuring assets so the same layout could be handed to someone else, and keeping the documentation current so it stayed usable after I moved on.</p>
+      </div>
+    </div>
+
+    <div class="spec flip">
+      <figure class="onDark">
+        <img src="assets/zeus-safearea.jpg" alt="Almighty Zeus Wilds feature screen drawn oversized, with the safe area at centre and bleed extending in all four directions" loading="lazy">
+        <figcaption>One artwork, every screen. The centre block is what every player sees; the arms are the bleed that fills taller and wider devices.</figcaption>
+      </figure>
+      <div>
+        <p><b>Drawing for a screen you can't predict.</b> A phone, a tablet and a desktop browser all crop the same feature screen differently. So the art is built oversized around a safe area: nothing that matters ever leaves the centre, and the background keeps going in all four directions.</p>
+        <p>Composition gets harder, not easier. The focal point has to read when the frame is tall and narrow, and still read when it's short and wide, without redrawing anything.</p>
+        <p>Getting this right at the art stage is what stops a title needing a separate layout pass per device later.</p>
       </div>
     </div>
   </div>

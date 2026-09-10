@@ -42,7 +42,6 @@ a{color:inherit}
 }
 .bar .wrap{display:flex;align-items:baseline;gap:24px;height:56px}
 .mark{font-weight:700;letter-spacing:-.02em;font-size:15px}
-.mark span{color:var(--muted);font-weight:500}
 .bar nav{margin-left:auto;display:flex;gap:20px;font-size:13.5px;color:var(--muted)}
 .bar nav a{text-decoration:none}
 .bar nav a:hover{color:var(--signal)}
@@ -61,8 +60,9 @@ h1{
 .here{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--muted)}
 .here b{color:var(--ink);font-weight:500}
 
-.reel{border:1px solid var(--rule);background:#000;overflow:hidden}
-.reel video{width:100%;height:auto}
+.reel{border:1px solid var(--rule);background:#15130F;overflow:hidden}
+.reel .stagevid{display:flex;align-items:center;justify-content:center;padding:clamp(14px,2vw,22px)}
+.reel video{width:auto;max-width:100%;max-height:min(58vh,460px);height:auto;box-shadow:0 12px 34px rgba(0,0,0,.45)}
 .reel figcaption{
   background:var(--paper);border-top:1px solid var(--rule);
   padding:9px 12px;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px
@@ -114,10 +114,17 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 
 /* ---------- work ---------- */
 .work{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.item{background:var(--paper);display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:0}
+.item{background:var(--paper);display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:0}
 @media(max-width:800px){.item{grid-template-columns:1fr}}
-.item .shot{background:#15130F;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.item .shot img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.item .shot{
+  background:#15130F;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:clamp(18px,2.4vw,26px)
+}
+.item .shot img{
+  width:auto;height:auto;max-width:100%;max-height:440px;object-fit:contain;
+  box-shadow:0 10px 28px rgba(0,0,0,.5)
+}
+@media(max-width:800px){.item .shot img{max-height:380px}}
 .item .body{padding:clamp(22px,3vw,34px)}
 .item h3{font-size:20px;letter-spacing:-.02em;font-weight:600;margin:0 0 4px}
 .item .meta{font-size:12.5px;color:var(--muted);margin:0 0 16px}
@@ -131,11 +138,31 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 @media(max-width:1000px){.vids{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.vids{grid-template-columns:repeat(2,1fr)}}
 .vid{border:1px solid var(--rule);background:var(--paper)}
-.vid .frame{position:relative;aspect-ratio:9/16;background:#000}
-.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid .frame{
+  position:relative;aspect-ratio:9/16;background:#000;width:100%;
+  border:0;padding:0;margin:0;display:block;cursor:pointer;overflow:hidden
+}
+.vid .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .frame .play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(20,18,16,.62);border:1px solid rgba(255,255,255,.55);
+  backdrop-filter:blur(2px);transition:background .18s ease,transform .18s ease
+}
+.vid .frame .play::after{
+  content:"";position:absolute;left:52%;top:50%;transform:translate(-50%,-50%);
+  border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent
+}
+.vid .frame:hover .play{background:var(--signal);transform:translate(-50%,-50%) scale(1.07)}
+.vid iframe{display:block;width:100%;aspect-ratio:9/16;border:0;background:#000}
 .vid .cap{padding:9px 10px 11px;border-top:1px solid var(--rule)}
 .vid .cap b{display:block;font-size:13px;font-weight:500;letter-spacing:-.01em;line-height:1.25}
 .vid .cap small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.vid .cap .yt{
+  display:inline-block;margin-top:7px;font-size:11.5px;color:var(--signal);
+  text-decoration:none;border-bottom:1px solid rgba(147,48,74,.4)
+}
+.vid .cap .yt:hover{color:var(--ink);border-color:var(--ink)}
 .vidnote{margin-top:20px;font-size:13.5px;color:var(--muted);max-width:60ch}
 
 /* ---------- spec ---------- */
@@ -166,7 +193,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
 
 <header class="bar">
   <div class="wrap">
-    <div class="mark">Zoey Tsou <span>/ Zelda</span></div>
+    <div class="mark">Zoey Tsou</div>
     <nav>
       <a href="#pipeline">Pipeline</a>
       <a href="#work">Work</a>
@@ -191,7 +218,9 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
       </div>
     </div>
     <figure class="reel" style="margin:0">
-      <video src="assets/doki-loop.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/doki-character.jpg"></video>
+      <div class="stagevid">
+        <video src="assets/doki-loop.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/doki-basegame.jpg"></video>
+      </div>
       <figcaption><span>Doki Doki Parfait — character animation and bonus sequence</span><span>Live capture</span></figcaption>
     </figure>
   </div>
@@ -248,7 +277,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
     <div class="work">
 
       <article class="item">
-        <div class="shot"><img src="assets/doki-feature.jpg" alt="Doki Doki Parfait — maid character and bonus feature"></div>
+        <div class="shot"><img src="assets/doki-basegame.jpg" alt="Doki Doki Parfait — maid character and base game reels" loading="lazy"></div>
         <div class="body">
           <h3>Doki Doki Parfait</h3>
           <p class="meta">Original studio IP · Character design, animation, in-game art</p>
@@ -259,7 +288,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
       </article>
 
       <article class="item">
-        <div class="shot"><img src="assets/playboy-wilds.jpg" alt="Playboy Wilds — character art and base game layout"></div>
+        <div class="shot"><img src="assets/playboy-wilds.jpg" alt="Playboy Wilds — character art and base game layout" loading="lazy"></div>
         <div class="body">
           <h3>Playboy Wilds</h3>
           <p class="meta">Licensed IP · Character art, symbol set, screen layout</p>
@@ -269,7 +298,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
       </article>
 
       <article class="item">
-        <div class="shot"><img src="assets/lucky-twins.jpg" alt="Lucky Twins Wilds — base game screen"></div>
+        <div class="shot"><img src="assets/lucky-twins.jpg" alt="Lucky Twins Wilds — free spins screen layout" loading="lazy"></div>
         <div class="body">
           <h3>Franchise work</h3>
           <p class="meta">Break Away ×3 · Lucky Twins ×4 · Almighty Zeus ×2 · Queen of Cairo ×2</p>
@@ -292,26 +321,52 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
     </div>
 
     <div class="vids">
+
       <div class="vid">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/VTMX1OUxVtU" title="Tiger's Treasures promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="cap"><b>Tiger's Treasures</b><small>Social cut</small></div>
+        <button class="frame" type="button" data-yt="VTMX1OUxVtU" aria-label="Play Tiger's Treasures promo video">
+          <img src="https://i.ytimg.com/vi/VTMX1OUxVtU/hqdefault.jpg" alt="" loading="lazy">
+          <span class="play"></span>
+        </button>
+        <div class="cap"><b>Tiger's Treasures</b><small>Social cut</small>
+          <a class="yt" href="https://www.youtube.com/watch?v=VTMX1OUxVtU" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
       </div>
+
       <div class="vid">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/osR4I36oU80" title="123 Soccer Link and Merge promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="cap"><b>123 Soccer</b><small>Link &amp; Merge mechanic</small></div>
+        <button class="frame" type="button" data-yt="osR4I36oU80" aria-label="Play 123 Soccer promo video">
+          <img src="https://i.ytimg.com/vi/osR4I36oU80/hqdefault.jpg" alt="" loading="lazy">
+          <span class="play"></span>
+        </button>
+        <div class="cap"><b>123 Soccer</b><small>Link &amp; Merge mechanic</small>
+          <a class="yt" href="https://www.youtube.com/watch?v=osR4I36oU80" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
       </div>
+
       <div class="vid">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/lfcLYjHvNrs" title="Break Away Deluxe Triple Pots promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="cap"><b>Break Away Deluxe</b><small>Triple Pots · franchise</small></div>
+        <button class="frame" type="button" data-yt="lfcLYjHvNrs" aria-label="Play Break Away Deluxe promo video">
+          <img src="https://i.ytimg.com/vi/lfcLYjHvNrs/hqdefault.jpg" alt="" loading="lazy">
+          <span class="play"></span>
+        </button>
+        <div class="cap"><b>Break Away Deluxe</b><small>Triple Pots · franchise</small>
+          <a class="yt" href="https://www.youtube.com/watch?v=lfcLYjHvNrs" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
       </div>
+
       <div class="vid">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/yE1hZa1RjuU" title="Almighty Zeus Wilds promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="cap"><b>Almighty Zeus Wilds</b><small>Link &amp; Merge mechanic</small></div>
+        <button class="frame" type="button" data-yt="yE1hZa1RjuU" aria-label="Play Almighty Zeus Wilds promo video">
+          <img src="https://i.ytimg.com/vi/yE1hZa1RjuU/hqdefault.jpg" alt="" loading="lazy">
+          <span class="play"></span>
+        </button>
+        <div class="cap"><b>Almighty Zeus Wilds</b><small>Link &amp; Merge mechanic</small>
+          <a class="yt" href="https://www.youtube.com/watch?v=yE1hZa1RjuU" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
       </div>
+
       <div class="vid">
-        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/wnjj-jmuwo4" title="NeZha Triple Powers promo video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="cap"><b>NeZha Triple Powers</b><small>Pot Link</small></div>
+        <button class="frame" type="button" data-yt="wnjj-jmuwo4" aria-label="Play NeZha Triple Powers promo video">
+          <img src="https://i.ytimg.com/vi/wnjj-jmuwo4/hqdefault.jpg" alt="" loading="lazy">
+          <span class="play"></span>
+        </button>
+        <div class="cap"><b>NeZha Triple Powers</b><small>Pot Link</small>
+          <a class="yt" href="https://www.youtube.com/watch?v=wnjj-jmuwo4" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
       </div>
+
     </div>
 
     <p class="vidnote">On each one I set the capture rules, recorded the gameplay, wrote the beat, and cut it. Portrait and landscape versions, multiple locales.</p>
@@ -328,7 +383,7 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
 
     <div class="spec">
       <figure>
-        <img src="assets/doki-ui-spec.jpg" alt="Annotated landscape UI layout showing named asset layers">
+        <img src="assets/doki-ui-spec.jpg" alt="Annotated landscape UI layout showing named asset layers" loading="lazy">
         <figcaption>Landscape UI layout with the asset layers named — reel frame, symbols, character states, control bar</figcaption>
       </figure>
       <div>
@@ -363,12 +418,28 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
   <div class="wrap">
     <h2>Get in touch</h2>
     <div class="links">
-      <a href="mailto:YOUR-EMAIL@example.com">YOUR-EMAIL@example.com</a>
-      <a href="https://www.linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:catoi0505@gmail.com">catoi0505@gmail.com</a>
+      <a href="https://www.linkedin.com/in/zoey-tsou/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <p class="fine">All game titles shown are published and publicly released. Screens and video are shown as work samples only; all game IP belongs to the respective rights holders.</p>
   </div>
 </footer>
+
+<script>
+document.querySelectorAll('.vid .frame').forEach(function(btn){
+  var img = btn.querySelector('img');
+  if (img) { img.addEventListener('error', function(){ img.style.display = 'none'; }); }
+  btn.addEventListener('click', function(){
+    var id = btn.getAttribute('data-yt');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    f.title = btn.getAttribute('aria-label') || 'Promo video';
+    f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+  });
+});
+</script>
 
 </body>
 </html>

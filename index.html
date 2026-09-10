@@ -97,6 +97,7 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 }
 .plate figcaption b{color:var(--ink);font-weight:500}
 .sheet .art{background:#fff;padding:clamp(14px,2.2vw,26px)}
+.plate.onDark .art{background:var(--dark)}
 .sheet .art img{width:100%;max-width:1020px;height:auto}
 
 .artgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(16px,2vw,22px);margin-top:clamp(16px,2vw,22px)}
@@ -159,6 +160,7 @@ h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;font-we
 .item .meta{font-size:12.5px;color:var(--muted);margin:0 0 16px}
 .item p{font-family:var(--serif);font-size:16.5px;line-height:1.55;margin:0 0 14px;max-width:56ch;color:#2E2C29}
 .item p:last-child{margin-bottom:0}
+.item p.note{font-family:var(--sans);font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:16px;max-width:52ch}
 .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
 .tag{font-size:12px;color:var(--muted);border:1px solid var(--rule);border-radius:2px;padding:3px 8px}
 
@@ -301,6 +303,14 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
       </figcaption>
     </figure>
 
+    <figure class="plate sheet onDark" style="margin-top:clamp(16px,2vw,22px)">
+      <div class="art"><img src="assets/kitsune-characters.jpg" alt="Kitsune Rush character and enemy line-up — two kitsune, a mouse, a spider, a snake, a boar and a bear against a night shrine" loading="lazy"></div>
+      <figcaption>
+        <span><b>Kitsune Rush</b> — the character and enemy line-up</span>
+        <span>Design and final art</span>
+      </figcaption>
+    </figure>
+
     <div class="artgrid">
       <figure class="plate">
         <div class="art">
@@ -389,12 +399,15 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
     <div class="work">
 
       <article class="item stack">
-        <div class="shot"><img class="full" src="assets/kitsune-rush.jpg" alt="Kitsune Rush — landscape base game with a torii gate reel frame and fox symbols" loading="lazy"></div>
+        <div class="shot">
+          <img class="duo" src="assets/kitsune-battle.jpg" alt="Kitsune Rush — full screen battle cut-in of the nine-tailed fox" loading="lazy">
+          <img class="duo" src="assets/kitsune-entry.jpg" alt="Kitsune Rush — free spins entry screen" loading="lazy">
+        </div>
         <div class="body">
           <h3>Kitsune Rush</h3>
           <p class="meta">Art lead · Team of three · Characters, enemies, reels, entry UI</p>
           <p>Art lead on a team of three artists. Holding the visual direction was the job — every asset went past me before it shipped — and I drew the characters, the enemies, the reels and the entry UI myself.</p>
-          <p>The layout is landscape-native. The torii doubles as the reel frame, so the theme is doing structural work rather than sitting behind the game as decoration.</p>
+          <p>The battle cut-in and the free spins entry, both mine. A cut-in has to land as a full screen moment; the entry has to say what you just won in one glance and still sit inside the shrine-at-night look the rest of the game is built on.</p>
           <div class="tagrow"><span class="tag">Art direction</span><span class="tag">Leading a team</span><span class="tag">Character art</span><span class="tag">Reel design</span><span class="tag">UI</span></div>
         </div>
       </article>
@@ -537,6 +550,17 @@ blockquote cite b{display:block;color:var(--ink);font-weight:500;font-size:13.5p
       <div>
         <p><b>One background, two orientations.</b> Phones play this title both ways up, and each orientation shows a different slice of the same background. So the art is drawn well past the edges of the screen in every direction: the centre is what everybody sees, and the extensions cover whatever the device crops to.</p>
         <p>The composition has to survive both crops. The focal point needs to read in a tall narrow frame and in a short wide one, and the background has to keep making sense wherever it gets cut — without drawing it twice.</p>
+      </div>
+    </div>
+
+    <div class="spec">
+      <figure class="onDark">
+        <img src="assets/kitsune-dialog.jpg" alt="Kitsune Rush win dialog, laid out for portrait and for landscape side by side" loading="lazy">
+        <figcaption>Kitsune Rush — the same win dialog, worked out for portrait and for landscape</figcaption>
+      </figure>
+      <div>
+        <p><b>The same dialog, laid out twice.</b> A win summary carries fixed content — what you defeated, what you won, how many free spins — and two very different shapes to fit it into. Portrait stacks it. Landscape spreads it.</p>
+        <p>Same elements, same hierarchy, different arrangement. Both versions get worked out at mock-up stage, so the landscape layout isn't an afterthought squeezed in once the portrait one is signed off.</p>
       </div>
     </div>
 
